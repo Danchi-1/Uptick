@@ -94,20 +94,30 @@ a:focus, .arrow:focus, .book-now-button:focus {
 .mobile-dropdown {
     display: none;
     position: absolute;
+    min-width: 200px;
+    width: 80vw;
+    max-width: 400px;
+    margin: 0 auto;
     top: 100%;
     left: 0;
     right: 0;
     background-color: var(--primary-color);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     z-index: 1000;
-    animation: slideDown 0.3s ease-out;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease-out;
 }
 
 .mobile-dropdown.active {
     display: block;
+    opacity: 1;
+    transform: translateY(10px);
+    animation: slideDown 0.3s ease;
 }
 
 .mobile-dropdown ul {
+    display: flex;
     flex-direction: column;
     gap: 0;
     padding: 10px 0;
@@ -602,4 +612,8 @@ footer {
     .colored-p {
         padding-left: 15px;
     }
+}
+
+.ac img {
+    width: 50%;
 }
