@@ -1,0 +1,375 @@
+:root {
+    --primary-color: #2A4D7A;
+    --background-color: #F9F6F2;
+    --accent-color: #D8A56C;
+}
+
+body {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
+    background: linear-gradient(225deg, var(--background-color) 0%, #f5d3acc3 100%);
+    color: var(--primary-color);
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    justify-items: center;
+    background-color: var(--primary-color);
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo-container img {
+    width: 50px;
+    transition: transform 0.3s ease-in-out;
+}
+
+#logo:hover {
+    cursor: pointer;
+    transform: scale(1.5);
+}
+
+/* Navigation */
+nav ul {
+    display: flex;
+    gap: 5%;
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: rgba(253, 249, 249, 0.887);
+    padding: 10px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover, .c {
+    background-color: var(--accent-color);
+}
+
+nav a:focus, .book-now-button:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 4px;
+}
+
+.book-now-button {
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    padding: 15px 25px;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    margin: 10px 0;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.book-now-button:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 2rem 0;
+}
+
+.header h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 300;
+    margin: 1.5rem 0 1rem 0;
+    color: var(--primary-color);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.header p {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.suite-card {
+    background-color: #ffffff;
+    border: 2px solid rgba(42, 77, 122, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.suite-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-color);
+    box-shadow: 0 20px 40px rgba(42, 77, 122, 0.15);
+}
+
+.suite-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color), var(--primary-color), var(--accent-color));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.suite-card:hover:before {
+    opacity: 1;
+}
+
+.suite-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.suite-name {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.suite-description {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.suite-features {
+    list-style: none;
+    margin-bottom: 2rem;
+    padding-left: 0;
+}
+
+.suite-features li {
+    padding: 0.5rem 0;
+    color: var(--primary-color);
+    position: relative;
+    padding-left: 1.5rem;
+    line-height: 1.6;
+}
+
+.suite-features li:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.price-section {
+    text-align: center;
+    padding: 1.5rem 0;
+    border-top: 2px solid rgba(42, 77, 122, 0.1);
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.price-period {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.book-btn {
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    border: 2px solid var(--primary-color);
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.book-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+.popular {
+    position: relative;
+    transform: scale(1.05);
+    border-color: var(--accent-color);
+}
+
+.footer-note {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    color: var(--primary-color);
+    font-family: 'Courier New', Courier, monospace;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.hotel-info h3,
+.quick-links h3,
+.social-media h3 {
+    margin-bottom: 15px;
+    color: var(--accent-color);
+}
+
+.hotel-info p {
+    line-height: 1.6em;
+}
+
+.quick-links ul,
+.social-media ul {
+    list-style: none;
+    padding: 0;
+}
+
+.quick-links li,
+.social-media li {
+    margin-bottom: 8px;
+}
+
+.quick-links a,
+.social-media a {
+    color: rgba(253, 249, 249, 0.887);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.quick-links a:hover,
+.social-media a:hover {
+    color: var(--accent-color);
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 40px 20px 20px 20px;
+    margin-top: 50px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Wave Animation */
+.wave, .wave2 {
+    position: fixed;
+    left: 0;
+    width: 100vw;
+    height: 180px;
+    bottom: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.wave {
+    background: linear-gradient(180deg, rgba(42,77,122,0.2) 60%, rgba(216,165,108,0.15) 100%);
+    opacity: 0.8;
+    animation: waveMove 8s ease-in-out infinite;
+    clip-path: polygon(
+        0 60%, 10% 65%, 20% 60%, 30% 70%, 40% 60%, 50% 65%,
+        60% 60%, 70% 70%, 80% 60%, 90% 65%, 100% 60%, 100% 100%, 0 100%
+    );
+}
+
+.wave2 {
+    background: linear-gradient(180deg, rgba(216,165,108,0.15) 60%, rgba(42,77,122,0.2) 100%);
+    opacity: 0.5;
+    animation: waveMove2 12s ease-in-out infinite reverse;
+    clip-path: polygon(
+        0 70%, 10% 75%, 20% 70%, 30% 80%, 40% 70%, 50% 75%,
+        60% 70%, 70% 80%, 80% 70%, 90% 75%, 100% 70%, 100% 100%, 0 100%
+    );
+}
+
+@keyframes waveMove {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-40px) scaleY(1.05); }
+}
+
+@keyframes waveMove2 {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(40px) scaleY(1.08); }
+}
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .container {
+        padding: 1rem;
+    }
+    
+    .popular {
+        transform: none;
+    }
+
+    header {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}

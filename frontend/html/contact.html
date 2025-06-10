@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact us</title>
+    <link rel="stylesheet" href="../css/event_styles.css">
+    <style>
+        body {
+            margin: 20px 25%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contact Us</h1>
+    <form action="" method="post" class="inquiry-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <button type="submit">Send Message</button>
+        <button onclick="window.location.href='../../index.html'">Go back</button>
+    </form>
+</body>
+</html>
