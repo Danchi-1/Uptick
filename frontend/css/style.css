@@ -21,6 +21,7 @@ header {
     background-color: var(--primary-color);
     padding: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
 }
 
 h1 {
@@ -39,10 +40,16 @@ h1 {
 }
 
 /* Navigation */
+nav {
+    position: relative;
+}
+
 ul {
     display: flex;
     gap: 5%;
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 a {
@@ -60,6 +67,76 @@ a:hover, .c {
 a:focus, .arrow:focus, .book-now-button:focus {
     outline: 2px solid var(--accent-color);
     outline-offset: 4px;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+}
+
+.hamburger-menu svg {
+    width: 30px;
+    height: 30px;
+    fill: rgba(253, 249, 249, 0.887);
+    transition: fill 0.3s ease;
+}
+
+.hamburger-menu:hover svg {
+    fill: var(--accent-color);
+}
+
+/* Mobile Dropdown */
+.mobile-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--primary-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    animation: slideDown 0.3s ease-out;
+}
+
+.mobile-dropdown.active {
+    display: block;
+}
+
+.mobile-dropdown ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 10px 0;
+}
+
+.mobile-dropdown li {
+    width: 100%;
+}
+
+.mobile-dropdown a {
+    display: block;
+    padding: 15px 20px;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-dropdown a:last-child {
+    border-bottom: none;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Call to Action Button */
@@ -134,6 +211,7 @@ a:focus, .arrow:focus, .book-now-button:focus {
 
 .ac {
     margin: 10px 25%;
+    max-width: fit-content;
 }
 
 #facilities {
@@ -361,4 +439,167 @@ footer {
 @keyframes waveMove2 {
     0%, 100% { transform: translateX(0); }
     50% { transform: translateX(40px) scaleY(1.08); }
+}
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+    /* Header adjustments */
+    header {
+        grid-template-columns: auto 1fr auto;
+        padding: 15px;
+        gap: 15px;
+    }
+    
+    /* Hide desktop navigation */
+    nav ul {
+        display: none;
+    }
+    
+    /* Show hamburger menu */
+    .hamburger-menu {
+        display: block;
+        justify-self: end;
+    }
+    
+    /* Logo adjustments */
+    .logo-container {
+        justify-self: start;
+    }
+    
+    .logo-container img {
+        width: 40px;
+    }
+    
+    /* Book now button adjustments */
+    .book-now-button {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+        justify-self: center;
+    }
+    
+    /* Typography adjustments */
+    h1 {
+        font-size: 1.8rem;
+        margin: 1rem 0 0.5rem 0;
+    }
+    
+    .intro {
+        font-size: 1.6em;
+        margin-bottom: 15px;
+    }
+    
+    /* Gallery adjustments */
+    .gallery-container {
+        padding: 15px;
+    }
+    
+    .image-gallery img {
+        width: 250px;
+        height: 320px;
+    }
+    
+    .esb {
+        margin: 10px 5%;
+    }
+    
+    .esb img {
+        width: 250px;
+        height: 160px;
+    }
+    
+    .ac {
+        margin: 10px 5%;
+    }
+    
+    /* About us section adjustments */
+    #about-us {
+        padding: 30px 20px;
+    }
+    
+    .about-us-container {
+        max-width: 100%;
+    }
+    
+    /* Features section adjustments */
+    .features-section {
+        padding: 30px 20px;
+        margin: 30px 15px;
+    }
+    
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    /* Footer adjustments */
+    footer {
+        flex-direction: column;
+        gap: 15px;
+        padding: 30px 20px;
+    }
+    
+    /* Wave animations - reduce height on mobile */
+    .wave, .wave2 {
+        height: 120px;
+    }
+    
+    /* Arrow adjustments */
+    .arrow, .farrow {
+        padding: 8px;
+        font-size: 16px;
+    }
+    
+    .arrow.left, .farrow.left { left: 5px; }
+    .arrow.right, .farrow.right { right: 5px; }
+}
+
+@media screen and (max-width: 480px) {
+    /* Extra small mobile devices */
+    header {
+        padding: 10px;
+    }
+    
+    .logo-container img {
+        width: 35px;
+    }
+    
+    .book-now-button {
+        padding: 10px 15px;
+        font-size: 0.8rem;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    .intro {
+        font-size: 1.4em;
+    }
+    
+    .image-gallery img {
+        width: 200px;
+        height: 280px;
+    }
+    
+    .esb img {
+        width: 200px;
+        height: 140px;
+    }
+    
+    .features-section {
+        margin: 20px 10px;
+        padding: 20px 15px;
+    }
+    
+    #about-us {
+        padding: 20px 15px;
+    }
+    
+    .faq-section {
+        padding: 20px;
+    }
+    
+    .colored-p {
+        padding-left: 15px;
+    }
 }

@@ -1,17 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded'); // Debug log
-    
     const signupForm = document.getElementById('signupForm');
     const signUpBtn = document.getElementById('signUpBtn');
     const messageContainer = document.getElementById('messageContainer');
 
-    // Check if elements exist
-    if (!signupForm) {
-        console.error('Signup form not found!');
-        return;
-    }
-
-    console.log('Signup form found, attaching event listener'); // Debug log
+    if (!signupForm) return;
 
     function showMessage(message, type) {
         messageContainer.innerHTML = `<div class="message ${type}">${message}</div>`;
@@ -19,11 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function hideMessage() {
-      const messageContainer = document.getElementById('messageContainer');
-      if (messageContainer) {
-          messageContainer.innerHTML = '';
-          messageContainer.scrollIntoView({ behavior: 'smooth' });
-      }
+        messageContainer.innerHTML = '';
     }
 
     function setLoading(isLoading) {
@@ -36,33 +24,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     signupForm.addEventListener('submit', async function(e) {
-        console.log('Form submitted!'); // Debug log
-        e.preventDefault(); // This MUST be first
-        e.stopPropagation(); // Add this too
-
+        e.preventDefault();
         hideMessage();
         setLoading(true);
 
         const formData = new FormData(signupForm);
-        const username = formData.get('username') || '';
-        const email = formData.get('email') || '';
-        const password = formData.get('password') || '';
-
         const signupData = {
-            username: username.trim(),
-            email: email.trim(),
-            password: password
+            username: formData.get('username').trim(),
+            email: formData.get('email').trim(),
+            password: formData.get('password')
         };
-        for (let [key, value] of formData.entries()) {
-          console.log(`Field: ${key} = ${value}`);
-        } 
 
-
-
-
-        console.log('Signup data:', signupData); // Debug log
-
-        // Validation
         if (!signupData.username || !signupData.email || !signupData.password) {
             showMessage('Please fill in all fields.', 'error');
             setLoading(false);
@@ -83,20 +55,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         try {
-            console.log('Making fetch request to:', 'http://127.0.0.1:8000/api/signup'); // Debug log
-            
             const response = await fetch('http://127.0.0.1:8000/api/signup', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(signupData)
             });
 
-            console.log('Response received:', response.status); // Debug log
-
             const result = await response.json();
-            console.log('Response data:', result); // Debug log
 
             if (response.ok) {
                 showMessage(
@@ -111,7 +76,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 );
             }
         } catch (error) {
-            console.error('Signup error:', error);
             showMessage(
                 'Network error. Please check your connection and try again.',
                 'error'
@@ -126,13 +90,13 @@ document.addEventListener('DOMContentLoaded', function() {
     if (emailInput) {
         emailInput.addEventListener('blur', function() {
             const email = this.value.trim();
-            if (email) {
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
-                    this.style.borderColor = '#dc3545';
-                } else {
-                    this.style.borderColor = '#28a745';
-                }
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email && !emailRegex.test(email)) {
+                this.style.borderColor = '#dc3545';
+            } else if (email) {
+                this.style.borderColor = '#28a745';
+            } else {
+                this.style.borderColor = '#ddd';
             }
         });
     }
