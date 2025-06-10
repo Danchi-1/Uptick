@@ -316,61 +316,109 @@ main {
     background-color: rgba(216, 165, 108, 0.1);
 }
 
-/* Footer */
+/* Footer *//* Responsive Footer Styles */
 footer {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 40px 20px 20px 20px;
-    margin-top: 50px;
+    background: var(--primary-color, #2A4D7A);
+    color: #fff;
+    padding: 40px 0 0 0;
+    font-size: 1rem;
 }
 
 .footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 32px;
+    gap: 32px;
+}
+
+.footer-content > div {
+    flex: 1 1 220px;
+    min-width: 220px;
+    margin-bottom: 24px;
 }
 
 .hotel-info h3,
 .quick-links h3,
 .social-media h3 {
-    margin-bottom: 15px;
-    color: var(--accent-color);
+    margin-bottom: 12px;
+    font-size: 1.2em;
+    color: var(--accent-color, #D8A56C);
 }
 
-.hotel-info p {
-    line-height: 1.6em;
+.hotel-info p,
+.social-media ul {
+    margin: 0;
+    font-size: 1em;
 }
 
-.quick-links ul,
 .social-media ul {
     list-style: none;
     padding: 0;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
 }
 
-.quick-links li,
-.social-media li {
-    margin-bottom: 8px;
-}
-
-.quick-links a,
 .social-media a {
-    color: rgba(253, 249, 249, 0.887);
+    color: #fff;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.2s;
 }
 
-.quick-links a:hover,
 .social-media a:hover {
-    color: var(--accent-color);
+    color: var(--accent-color, #D8A56C);
 }
 
-.copyright {
+footer .copyright {
     text-align: center;
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 16px 0;
+    background: rgba(0,0,0,0.08);
+    font-size: 0.95em;
+    color: #eee;
+    margin-top: 0;
+    border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+/* Responsive styles */
+@media (max-width: 900px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0 16px;
+        gap: 0;
+    }
+    .footer-content > div {
+        margin-bottom: 20px;
+    }
+    .social-media ul {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 600px) {
+    footer {
+        padding: 24px 0 0 0;
+        font-size: 0.98rem;
+    }
+    .footer-content {
+        padding: 0 8px;
+    }
+    .footer-content > div {
+        min-width: 0;
+        margin-bottom: 16px;
+    }
+    .hotel-info h3,
+    .quick-links h3,
+    .social-media h3 {
+        font-size: 1.08em;
+    }
+    .social-media ul {
+        gap: 10px;
+    }
 }
 
 /* Wave Animation */

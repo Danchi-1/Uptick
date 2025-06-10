@@ -15,10 +15,8 @@ body {
 
 /* Header */
 header {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    align-items: center;
-    justify-items: center;
+    display: flex;
+    justify-content: space-around;
     background-color: var(--primary-color);
     padding: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -58,13 +56,41 @@ nav a:focus, .book-now-button:focus {
     outline-offset: 4px;
 }
 
+.hamburger-menu {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
+    width: 40px;
+    height: 40px;
+}
+
+.hamburger-menu svg {
+    width: 32px;
+    height: 32px;
+    fill: var(--accent-color, #D8A56C);
+}
+
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: block;
+    }
+    nav ul {
+        display: none;
+    }
+    .mobile-dropdown.active {
+        display: block;
+    }
+}
+
 .book-now-button {
     background-color: var(--accent-color);
     color: var(--background-color);
     padding: 15px 25px;
     border: 2px solid var(--primary-color);
     border-radius: 5px;
-    margin: 10px 0;
+    margin: 0;
     font-weight: bold;
     transition: all 0.3s ease;
 }
@@ -214,6 +240,65 @@ nav a:focus, .book-now-button:focus {
     color: var(--primary-color);
     font-size: 0.9rem;
     font-family: 'Courier New', Courier, monospace;
+}
+
+/* Mobile Dropdown */
+.mobile-dropdown {
+    display: none;
+    position: absolute;
+    min-width: 200px;
+    width: 80vw;
+    max-width: 400px;
+    margin: 0 auto;
+    top: 15%;
+    left: 0;
+    right: 0;
+    background-color: var(--primary-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1100;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease-out;
+}
+
+.mobile-dropdown.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(10px);
+    animation: slideDown 0.3s ease;
+}
+
+.mobile-dropdown ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 10px 0;
+}
+
+.mobile-dropdown li {
+    width: 100%;
+}
+
+.mobile-dropdown a {
+    display: block;
+    padding: 15px 20px;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-dropdown a:last-child {
+    border-bottom: none;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(10px);
+    }
 }
 
 .book-btn {
@@ -371,5 +456,14 @@ footer {
     header {
         grid-template-columns: 1fr;
         gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-dropdown {
+        display: none;
+    }
+    .mobile-dropdown.active {
+        display: block;
     }
 }
